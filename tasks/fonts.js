@@ -1,5 +1,5 @@
 const paths = require("./_paths");
-const { notify } = require("./_helpers");
+const { notify, help_path } = require("./_helpers");
 const { src, dest, series } = require("gulp");
 const fs = require("fs");
 const ttf2woff = require("gulp-ttf2woff");
@@ -35,13 +35,14 @@ function fonts_woff2(file) {
 function fonts_enqueue(file) {
   return src(file).on("data", function (file) {
     const fontInfo = file.stem.split("_");
+    const fileName = file.stem;
     const fontName = fontInfo[0];
     const fontWeight = fontInfo[1];
     const fontStyle = fontInfo[2];
 
-    const importStr = `@include font("${fontName}", "${fontName}", ${fontWeight}, ${fontStyle});\n`;
+    const importStr = `@include font("${fontName}", "${fileName}", ${fontWeight}, ${fontStyle});\n`;
     const regexStr = new RegExp(
-      `"${fontName}", "${fontName}", ${fontWeight}, ${fontStyle}`,
+      `"${fontName}", "${fileName}", ${fontWeight}, ${fontStyle}`,
       "g"
     );
 
@@ -74,6 +75,63 @@ function fonts_enqueue(file) {
   });
 }
 
+// TODO Есть проблема при массовом удалении шрифтов ломается файл стилей подключения
+function fonts_remove(done, file) {
+  // Удаление файла
+  const fontsFolder = paths.dist.fonts;
+  const filePath = file.arr;
+  const fileName = file.basename;
+  const files = [];
+
+  files.push(fontsFolder + "/" + fileName + ".woff");
+  files.push(fontsFolder + "/" + fileName + ".woff2");
+
+  files.forEach((item) => {
+    fs.unlink(item, function () {
+      notify(["fonts", "remove"], "del", `Файл: ${item} удален успешно.`);
+    });
+  });
+
+  // Удаление подключения в стилях
+  const fontsStyle = paths.src.scss_global + "/_fonts.scss";
+  const fontInfo = fileName.split("_");
+  const fontName = fontInfo[0];
+  const fontWeight = fontInfo[1];
+  const fontStyle = fontInfo[2];
+  const strToDelete = `@include font("${fontName}", "${fileName}", ${fontWeight}, ${fontStyle});`;
+
+  fs.readFile(fontsStyle, "utf8", function (err, data) {
+    if (err) {
+      throw err;
+    }
+
+    const index = data.indexOf(strToDelete);
+
+    if (index !== -1) {
+      const updatedData = data.replace(strToDelete, "");
+
+      fs.writeFile(fontsStyle, updatedData, function (err) {
+        if (err) {
+          throw err;
+        }
+        notify(
+          ["fonts", "remove"],
+          "ok",
+          "Подключение шрифта в файле стиля удалено."
+        );
+      });
+    } else {
+      notify(
+        ["fonts", "remove"],
+        "info",
+        "Подключение шрифта в файле стилей не найдено."
+      );
+    }
+  });
+
+  done();
+}
+
 // TODO если будет время сделать отлов ошибок
 function fonts_compile(done, filePath = paths.src.fonts + "/*.ttf") {
   if (fs.readdirSync(paths.src.fonts).length !== 0) {
@@ -98,4 +156,5 @@ module.exports = {
   fonts_woff,
   fonts_woff2,
   fonts_compile,
+  fonts_remove,
 };

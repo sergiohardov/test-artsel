@@ -25,13 +25,13 @@ function html_compile(file = null) {
           notify(
             ["html", "compile"],
             "info",
-            `Страница: ${currentFile.basename} - была изменена.`
+            `Страница: ${currentFile.fullname} - была изменена.`
           );
         } else {
           notify(
             ["html", "compile"],
             "info",
-            `Компонент: ${currentFile.basename} - был изменен.`
+            `Компонент: ${currentFile.fullname} - был изменен.`
           );
         }
       }

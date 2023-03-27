@@ -2,7 +2,7 @@ const paths = require("./_paths");
 const { notify, help_path } = require("./_helpers");
 const { watch, parallel } = require("gulp");
 const html = require("./html");
-const { fonts_compile } = require("./fonts");
+const { fonts_compile, fonts_remove } = require("./fonts");
 
 module.exports = function watching(done) {
   // HTML
@@ -25,10 +25,13 @@ module.exports = function watching(done) {
 
   // FONTS
   watch(paths.watch.fonts)
-  .on("add", function (file) {
-    let filePath = help_path(file).path;
-    fonts_compile(done, filePath)
-  });
+    .on("add", function (file) {
+      let filePath = help_path(file).path;
+      fonts_compile(done, filePath);
+    })
+    .on("unlink", function (file) {
+      fonts_remove(done, help_path(file));
+    });
 
   notify(["watch"], "ok", "Включено слежение за файлами.");
   done();

@@ -48,11 +48,12 @@ function notify(
 function help_path(path) {
   const resultPath = {
     arr: [],
-    basename: "",
-    ext: "",
+    path: "",
     basedir: "",
     parentdir: "",
-    path: "",
+    fullname: "",
+    basename: "",
+    ext: "",
   };
 
   if (path.includes("\\") || path.includes("/")) {
@@ -64,22 +65,28 @@ function help_path(path) {
       // arr
       resultPath.arr = path.split("/");
     }
+    // path
+    resultPath.path = resultPath.arr.join("/");
 
-    // basename
-    resultPath.basename = resultPath.arr[resultPath.arr.length - 1];
-    // ext
-    resultPath.ext = resultPath.basename.split(".");
-    resultPath.ext = resultPath.ext[resultPath.ext.length - 1];
     // basedir
     resultPath.basedir = resultPath.arr
       .slice(0, resultPath.arr.length - 1)
       .join("/");
+
     // parentdir
     resultPath.parentdir = resultPath.arr
       .slice(1, resultPath.arr.length - 1)
       .join("/");
-    // path
-    resultPath.path = resultPath.arr.join("/");
+
+    // fullname
+    resultPath.fullname = resultPath.arr[resultPath.arr.length - 1];
+
+    // basename
+    resultPath.basename = resultPath.fullname.split(".").slice(0, -1).join('');
+
+    // ext
+    resultPath.ext = resultPath.fullname.split(".");
+    resultPath.ext = resultPath.ext[resultPath.ext.length - 1];
 
     return resultPath;
   } else {
