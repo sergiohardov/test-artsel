@@ -9,6 +9,7 @@
   "author": "Serhii Pivovar",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.29.1",
     "chalk": "^4.1.1",
     "del": "^6.1.1",
     "gulp": "^4.0.2",
