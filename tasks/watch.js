@@ -19,6 +19,9 @@ module.exports = function watching(done) {
   // SCSS
   watch(paths.watch.scss, parallel("style"));
 
+  // JS
+  watch(paths.watch.js, parallel("script"));
+
   notify(["watch"], "ok", "Включено слежение за файлами.");
   done();
 };
