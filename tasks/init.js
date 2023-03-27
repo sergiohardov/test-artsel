@@ -6,7 +6,7 @@ const messages = {
   html: "<!-- Базовый файл HTML, использовать !+tab что бы начать (пустой файл browsersync обновлять не будет) -->\n",
   scss: {
     base: "// Базовый файл стилей, все импорты подключаются тут.\n",
-    imports: `@import "_variables";\n@import "_mixins";\n@import "../components/**/*.scss";\n`,
+    imports: `@import "_variables";\n@import "_mixins";\n@import "_fonts";\n@import "../components/**/*.scss";\n`,
     variables: "// Базовый файл для переменных.\n",
     mixins: `// Базовый файл для миксинов.
 @mixin font($font_name, $file_name, $weight, $style) {
@@ -20,7 +20,7 @@ const messages = {
   }
 }\n`,
     fonts:
-      "// Сюда автоматически будут добавляться с помощью миксина стили для шрифтов.",
+      "// Сюда автоматически будут добавляться с помощью миксина стили для шрифтов.\n",
   },
   js: "// Базовый файл скриптов, входящий.\n",
 };
