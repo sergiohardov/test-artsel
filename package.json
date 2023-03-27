@@ -9,6 +9,7 @@
   "author": "Serhii Pivovar",
   "license": "ISC",
   "devDependencies": {
+    "chalk": "^4.1.1",
     "gulp": "^4.0.2",
     "require-dir": "^1.2.0"
   }
