@@ -17,6 +17,7 @@ const paths = {
   dist: {
     folder: folder_dist,
     css: folder_dist + "/css",
+    js: folder_dist + "/js",
   },
   watch: {
     html: folder_src + "/html/**/*.html",
