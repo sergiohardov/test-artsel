@@ -19,12 +19,14 @@ const paths = {
     css: folder_dist + "/css",
     js: folder_dist + "/js",
     fonts: folder_dist + "/assets/fonts",
+    images: folder_dist + "/assets/images",
   },
   watch: {
     html: folder_src + "/html/**/*.html",
     scss: folder_src + "/scss/**/*.scss",
     js: folder_src + "/js/**/*.js",
     fonts: folder_src + "/fonts/*.ttf",
+    images: folder_src + "/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp}",
   },
 };
 

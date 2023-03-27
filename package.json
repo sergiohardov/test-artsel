@@ -17,6 +17,7 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-file-include": "^2.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-imagemin": "^6.2.0",
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
@@ -24,6 +25,7 @@
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^4.0.1",
     "gulp-uglify-es": "^3.0.0",
+    "gulp-webp": "^4.0.1",
     "require-dir": "^1.2.0",
     "sass": "^1.60.0"
   }

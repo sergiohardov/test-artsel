@@ -8,6 +8,7 @@ exports.html = tasks.html.html_compile;
 exports.style = tasks.style;
 exports.script = tasks.script;
 exports.fonts = tasks.fonts.fonts_compile;
+exports.images = tasks.images;
 exports.watch = tasks.watch;
 exports.browsersync = tasks.browsersync;
 
