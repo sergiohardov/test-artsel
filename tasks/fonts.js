@@ -31,10 +31,10 @@ function fonts_woff2(file) {
     });
 }
 
-function fonts_compile(done) {
+function fonts_compile(done, filePath = paths.src.fonts + "/*.ttf") {
   if (fs.readdirSync(paths.src.fonts).length !== 0) {
-    fonts_woff(paths.src.fonts + "/**/*.ttf").on("finish", function () {
-      fonts_woff2(paths.src.fonts + "/**/*.ttf").on("finish", function () {
+    fonts_woff(filePath).on("finish", function () {
+      fonts_woff2(filePath).on("finish", function () {
         done();
       });
     });

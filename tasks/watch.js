@@ -1,7 +1,8 @@
 const paths = require("./_paths");
-const { notify } = require("./_helpers");
+const { notify, help_path } = require("./_helpers");
 const { watch, parallel } = require("gulp");
 const html = require("./html");
+const { fonts_compile } = require("./fonts");
 
 module.exports = function watching(done) {
   // HTML
@@ -21,6 +22,13 @@ module.exports = function watching(done) {
 
   // JS
   watch(paths.watch.js, parallel("script"));
+
+  // FONTS
+  watch(paths.watch.fonts)
+  .on("add", function (file) {
+    let filePath = help_path(file).path;
+    fonts_compile(done, filePath)
+  });
 
   notify(["watch"], "ok", "Включено слежение за файлами.");
   done();

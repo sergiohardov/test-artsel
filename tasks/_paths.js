@@ -24,6 +24,7 @@ const paths = {
     html: folder_src + "/html/**/*.html",
     scss: folder_src + "/scss/**/*.scss",
     js: folder_src + "/js/**/*.js",
+    fonts: folder_src + "/fonts/*.ttf",
   },
 };
 
