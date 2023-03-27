@@ -45,6 +45,49 @@ function notify(
   return null;
 }
 
+function help_path(path) {
+  const resultPath = {
+    arr: [],
+    basename: "",
+    ext: "",
+    basedir: "",
+    parentdir: "",
+    path: "",
+  };
+
+  if (path.includes("\\") || path.includes("/")) {
+    if (path.includes("\\")) {
+      // arr
+      resultPath.arr = path.split("\\");
+    }
+    if (path.includes("/")) {
+      // arr
+      resultPath.arr = path.split("/");
+    }
+
+    // basename
+    resultPath.basename = resultPath.arr[resultPath.arr.length - 1];
+    // ext
+    resultPath.ext = resultPath.basename.split(".");
+    resultPath.ext = resultPath.ext[resultPath.ext.length - 1];
+    // basedir
+    resultPath.basedir = resultPath.arr
+      .slice(0, resultPath.arr.length - 1)
+      .join("/");
+    // parentdir
+    resultPath.parentdir = resultPath.arr
+      .slice(1, resultPath.arr.length - 1)
+      .join("/");
+    // path
+    resultPath.path = resultPath.arr.join("/");
+
+    return resultPath;
+  } else {
+    return path;
+  }
+}
+
 module.exports = {
   notify,
+  help_path,
 };
