@@ -3,14 +3,26 @@ const { notify } = require("./_helpers");
 const fs = require("fs");
 
 const messages = {
-  html: "<!-- Базовый файл HTML, использовать !+tab что бы начать (пустой файл browsersync обновлять не будет) -->\r\n",
+  html: "<!-- Базовый файл HTML, использовать !+tab что бы начать (пустой файл browsersync обновлять не будет) -->\n",
   scss: {
-    base: "// Базовый файл стилей, все импорты подключаются тут.\r\n",
+    base: "// Базовый файл стилей, все импорты подключаются тут.\n",
     imports: `@import "_variables";\n@import "_mixins";\n@import "../components/**/*.scss";\n`,
-    variables: "// Базовый файл для переменных.\r\n",
-    mixins: "// Базовый файл для миксинов.\r\n",
+    variables: "// Базовый файл для переменных.\n",
+    mixins: `// Базовый файл для миксинов.
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../assets/fonts/#{$file_name}.woff") format("woff"),
+      url("../assets/fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}\n`,
+    fonts:
+      "// Сюда автоматически будут добавляться с помощью миксина стили для шрифтов.",
   },
-  js: "// Базовый файл скриптов, входящий.\r\n",
+  js: "// Базовый файл скриптов, входящий.\n",
 };
 
 module.exports = function init(done) {
@@ -53,6 +65,16 @@ module.exports = function init(done) {
     fs.writeFile(
       paths.src.scss_global + "/_mixins.scss",
       messages.scss.mixins,
+      (err) => {
+        if (err) throw err;
+      }
+    );
+  }
+
+  if (!fs.existsSync(paths.src.scss_global + "/_fonts.scss")) {
+    fs.writeFile(
+      paths.src.scss_global + "/_fonts.scss",
+      messages.scss.fonts,
       (err) => {
         if (err) throw err;
       }
