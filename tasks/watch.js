@@ -33,6 +33,9 @@ module.exports = function watching(done) {
       fonts_remove(done, help_path(file));
     });
 
+  // IMAGES
+  watch(paths.watch.images, parallel("images"));
+
   notify(["watch"], "ok", "Включено слежение за файлами.");
   done();
 };
