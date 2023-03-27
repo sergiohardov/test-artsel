@@ -21,8 +21,6 @@ function html_compile(file = null) {
     .on("finish", function () {
       if (file !== null && typeof file !== "function") {
         const currentFile = help_path(file);
-        console.log(file);
-
         if (currentFile.path.includes(paths.src.html_pages)) {
           notify(
             ["html", "compile"],
