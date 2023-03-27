@@ -1,4 +1,5 @@
 const paths = require("./_paths");
+const fs = require("fs");
 const { notify, help_path } = require("./_helpers");
 const { src, dest } = require("gulp");
 const include = require("gulp-file-include");
@@ -43,6 +44,43 @@ function html_compile(file = null) {
     .pipe(browsersync.stream());
 }
 
+function html_remove(done, file) {
+  let devPath = help_path(paths.src.html_pages).arr;
+  let srcPath = paths.dist.folder;
+  let filePath = help_path(file).arr;
+  let fileFolder = null;
+
+  filePath.splice(0, devPath.length);
+
+  filePath = [srcPath, ...filePath];
+  fileFolder = filePath.slice(0, filePath.length - 1);
+  filePath = filePath.join("/");
+  fileFolder = fileFolder.join("/");
+
+  // Удаление файла из src
+  fs.unlink(filePath, function () {
+    // Если файл был в папке и она пуста
+    // TODO Удаление пустой папки из src вызывает ошибку
+    if (
+      fs.existsSync(fileFolder) &&
+      fs.readdirSync(fileFolder).length === 0 &&
+      fileFolder != paths.dist.folder
+    ) {
+      fs.rmdir(fileFolder, function () {
+        notify(
+          ["html", "remove"],
+          "del",
+          `Папка: ${fileFolder} удалена успешно.`
+        );
+      });
+    }
+    notify(["html", "remove"], "del", `Файл: ${filePath} удален успешно.`);
+  });
+
+  done();
+}
+
 module.exports = {
   html_compile,
+  html_remove,
 };

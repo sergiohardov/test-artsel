@@ -10,6 +10,9 @@ module.exports = function watching(done) {
     })
     .on("add", function (file) {
       html.html_compile(file);
+    })
+    .on("unlink", function (file) {
+      html.html_remove(done, file);
     });
 
   notify(["watch"], "ok", "Включено слежение за файлами.");
