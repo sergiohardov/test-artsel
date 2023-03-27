@@ -4,6 +4,7 @@ const { notify, help_path } = require("./_helpers");
 const { src, dest } = require("gulp");
 const include = require("gulp-file-include");
 const prettify = require("gulp-prettify");
+const webphtml = require("gulp-webp-html-nosvg");
 const browsersync = require("browser-sync");
 
 function html_compile(file = null) {
@@ -16,6 +17,7 @@ function html_compile(file = null) {
       hasError = true;
       this.emit("end");
     })
+    .pipe(webphtml())
     .pipe(prettify({ indent_size: 2 }))
     .pipe(dest(paths.dist.folder))
     .on("finish", function () {

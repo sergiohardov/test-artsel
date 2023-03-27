@@ -82,7 +82,7 @@ function help_path(path) {
     resultPath.fullname = resultPath.arr[resultPath.arr.length - 1];
 
     // basename
-    resultPath.basename = resultPath.fullname.split(".").slice(0, -1).join('');
+    resultPath.basename = resultPath.fullname.split(".").slice(0, -1).join("");
 
     // ext
     resultPath.ext = resultPath.fullname.split(".");
