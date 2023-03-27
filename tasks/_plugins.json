@@ -1,0 +1,10 @@
+{
+  "swiper": {
+    "css": ["./node_modules/swiper/swiper-bundle.css"],
+    "js": ["./node_modules/swiper/swiper-bundle.js"]
+  },
+  "bootstrap": {
+    "css": ["./node_modules/bootstrap/swiper-bundle.css"],
+    "js": ["./node_modules/bootstrap/swiper-bundle.js"]
+  }
+}
