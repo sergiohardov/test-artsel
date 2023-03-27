@@ -21,6 +21,7 @@ module.exports = function init(done) {
   fs.mkdirSync(paths.src.scss_components, { recursive: true });
   fs.mkdirSync(paths.src.scss_global, { recursive: true });
   fs.mkdirSync(paths.src.js, { recursive: true });
+  fs.mkdirSync(paths.src.fonts, { recursive: true });
 
   if (!fs.existsSync(paths.src.html_pages + "/index.html")) {
     fs.writeFile(paths.src.html_pages + "/index.html", messages.html, (err) => {
