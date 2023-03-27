@@ -17,6 +17,9 @@ const paths = {
   dist: {
     folder: folder_dist,
   },
+  watch: {
+    html: folder_src + "/html/**/*.html",
+  },
 };
 
 module.exports = paths;
