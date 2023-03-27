@@ -10,6 +10,7 @@ const messages = {
     variables: "// Базовый файл для переменных.\r\n",
     mixins: "// Базовый файл для миксинов.\r\n",
   },
+  js: "// Базовый файл скриптов, входящий.\r\n",
 };
 
 module.exports = function init(done) {
@@ -19,6 +20,7 @@ module.exports = function init(done) {
   fs.mkdirSync(paths.src.scss, { recursive: true });
   fs.mkdirSync(paths.src.scss_components, { recursive: true });
   fs.mkdirSync(paths.src.scss_global, { recursive: true });
+  fs.mkdirSync(paths.src.js, { recursive: true });
 
   if (!fs.existsSync(paths.src.html_pages + "/index.html")) {
     fs.writeFile(paths.src.html_pages + "/index.html", messages.html, (err) => {
@@ -54,6 +56,12 @@ module.exports = function init(done) {
         if (err) throw err;
       }
     );
+  }
+
+  if (!fs.existsSync(paths.src.js + "/script.js")) {
+    fs.writeFile(paths.src.js + "/script.js", messages.js, (err) => {
+      if (err) throw err;
+    });
   }
 
   notify(["init"], "ok", "Базовые папки и файлы были созданы.");
