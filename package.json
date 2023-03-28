@@ -29,5 +29,8 @@
     "gulp-webp-html-nosvg": "^1.1.1",
     "require-dir": "^1.2.0",
     "sass": "^1.60.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
   }
 }

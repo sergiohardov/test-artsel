@@ -9,7 +9,7 @@ exports.style = tasks.style;
 exports.script = tasks.script;
 exports.fonts = tasks.fonts.fonts_compile;
 exports.images = tasks.images;
-exports.plugins = tasks.plugins;
+// exports.plugins = tasks.plugins;
 exports.watch = tasks.watch;
 exports.browsersync = tasks.browsersync;
 
@@ -19,6 +19,7 @@ exports.default = series(
   exports.fonts,
   exports.style,
   exports.script,
-  exports.plugins,
+  exports.images,
+  // exports.plugins,
   parallel(exports.watch, exports.browsersync)
 );
