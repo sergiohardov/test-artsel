@@ -1,6 +1,15 @@
 .hero-section {
   padding: 80px 0 80px 0;
-  &__members {
-    row-gap: 60px;
+  .row:has(.member-card) {
+    row-gap: 80px;
+  }
+  .swiper-pagination {
+    position: relative;
+    &-bullet-active {
+      background: $color-straw;
+    }
+  }
+  @media (max-width: 992px) {
+    padding: 40px 0 40px 0;
   }
 }

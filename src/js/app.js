@@ -1,6 +1,9 @@
 // Базовый файл скриптов, входящий.
 import { isWebp } from "./modules/functions.js";
-import { slider } from "./modules/slider.js";
+import heroSection from "./components/hero-section.js";
 
+// Проверка на WebP
 isWebp();
-slider();
+
+// HeroSection
+heroSection.sectionSlider(".hero-section", ".member-card");
