@@ -5,12 +5,12 @@
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
+    "create": "gulp init",
     "dev": "gulp",
     "build": "gulp build --build",
-    "zip": "gulp deployZIP --build",
-    "svgSprive": "gulp svgSprive"
+    "zip": "gulp deployZIP --build"
   },
-  "author": "",
+  "author": "Serhii Pivovar",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.29.1",
