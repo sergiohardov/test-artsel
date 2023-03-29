@@ -1,3 +1,6 @@
 // Базовый файл скриптов, входящий.
-import * as flsFunctions from "./modules/functions.js";
-flsFunctions.isWebp();
+import { isWebp } from "./modules/functions.js";
+import { slider } from "./modules/slider.js";
+
+isWebp();
+slider();
