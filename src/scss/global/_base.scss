@@ -1,0 +1,28 @@
+// Базовый файл стилей, для глобальных селекторов.
+body {
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+  }
+  .alignfull {
+    margin: 0 calc(50% - 50vw);
+    max-width: 100vw;
+    width: 100vw;
+  }
+  .page {
+    overflow-x: hidden;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-color-white {
+    color: #fff;
+  }
+  .bg-color-green {
+    background-color: $color-green;
+    // @include media-breakpoint-down(md) {
+    //   background-color: blue; 
+    // }
+  }
+  
+  
