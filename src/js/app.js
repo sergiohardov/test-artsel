@@ -6,4 +6,4 @@ import heroSection from "./components/hero-section.js";
 isWebp();
 
 // HeroSection
-heroSection.sectionSlider(".hero-section", ".member-card");
+heroSection.sectionSlider(".hero-section", ".member-card", 1200);

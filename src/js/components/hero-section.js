@@ -1,6 +1,6 @@
 import { heroSlider } from "./sliders.js";
 
-const sectionSlider = (sectionClass, slideClass) => {
+const sectionSlider = (sectionClass, slideClass, width) => {
   const section = document.querySelector(sectionClass);
   const slides = section.querySelectorAll(slideClass);
   const container = slides[0].parentElement;
@@ -14,42 +14,51 @@ const sectionSlider = (sectionClass, slideClass) => {
   sliderContainer.append(sliderWrapper);
   sliderContainer.append(sliderDots);
 
+  let count = slides.length > 2;
+  let flag = window.innerWidth < width;
   let slider = null;
 
-  function toggleSlider(active) {
-    if (active) {
+  function toggleSlider(sliderEnable) {
+    if (sliderEnable) {
+      console.log("Включение слайдера");
       slides.forEach((slide) => {
         slide.classList.add("swiper-slide");
       });
+
       container.append(sliderContainer);
       sliderWrapper.append(...slides);
+
       slider = heroSlider(sectionClass + " .swiper-container");
       slider.init();
     } else {
-      if (slider) slider.destroy();
+      console.log("Выключение слайдера");
+      slider.destroy();
+      slider = null;
+
       slides.forEach((slide) => {
         slide.classList.remove("swiper-slide");
       });
+
       container.innerHTML = "";
       container.append(...slides);
     }
   }
 
-  let flag = window.innerWidth < 1200;
-  let count = slides.length > 2;
-
   if (count) {
-    toggleSlider(flag);
+    if (flag) {
+      toggleSlider(true);
+      flag = false;
+    }
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 1200 && flag) {
-        toggleSlider(flag);
+      if (window.innerWidth < width && flag) {
         flag = false;
+        if (!slider) toggleSlider(true);
       }
 
-      if (window.innerWidth >= 1200 && !flag) {
-        toggleSlider(flag);
+      if (window.innerWidth >= width && !flag) {
         flag = true;
+        if (slider) toggleSlider(false);
       }
     });
   }
