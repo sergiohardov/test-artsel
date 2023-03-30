@@ -1,4 +1,4 @@
-import fileinclude from "gulp-file-include";
+import fileinclude from "../fix/gulp-file-include/index.js";
 import webpHtml from "gulp-webp-html-nosvg";
 import versionNumber from "gulp-version-number";
 
