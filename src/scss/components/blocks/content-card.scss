@@ -1,0 +1,14 @@
+.content-card {
+  padding: 68px 47px 68px 47px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  p {
+    color: $color-white;
+    opacity: 0.8;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

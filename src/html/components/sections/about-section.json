@@ -1,0 +1,17 @@
+{
+  "class": "bg-color-red",
+  "title": "Our way",
+  "contents": [
+    {
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic maiores nihil nulla placeat porro veritatis. Ad asperiores distinctio eligendi, impedit in perferendis? Aliquam ducimus enim eveniet, id nemo soluta voluptate."
+    },
+    {
+      "text": "Soluta delectus commodi blanditiis incidunt voluptate assumenda magni, dolorem esse vero nesciunt dolorum asperiores. Consequatur laboriosam repellat dolorum!"
+    }
+  ],
+  "btn": {
+    "class": "bg-color-pink",
+    "text": "More about us",
+    "link": "#"
+  }
+}
