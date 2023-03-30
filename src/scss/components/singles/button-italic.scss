@@ -30,4 +30,10 @@
       left: 0;
     }
   }
+  @include media-breakpoint-down(xl) {
+    padding: 12.5px 50px;
+  }
+  @include media-breakpoint-down(lg) {
+    padding: 8.5px 40px;
+  }
 }
