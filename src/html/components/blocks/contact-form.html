@@ -1,0 +1,30 @@
+<form class="contact-form">
+  <div class="contact-form__field">
+    <label for="form_name">Name</label>
+    <input name="form_name" type="text" placeholder="John Doe" id="form_name" />
+    <span class="contact-form__error">Please complete this name field.</span>
+  </div>
+
+  <div class="contact-form__field">
+    <label for="form_email">Email</label>
+    <input name="form_email" type="email" placeholder="johndoe@gmail.com" id="form_email" />
+    <span class="contact-form__error">Please complete this email field.</span>
+  </div>
+
+  <div class="contact-form__field">
+    <label for="form_message">Your Message</label>
+    <textarea
+      name="form_message"
+      cols="30"
+      rows="4"
+      placeholder="Tell us what you need and we’ll take care of the rest."
+      id="form_message"
+    ></textarea>
+    <span class="contact-form__error">Please complete this message field.</span>
+  </div>
+
+  <div class="contact-form__controls">
+    <div class="form_captcha">captcha</div>
+    <button class="contact-form__submit" type="submit" disabled>Send Message</button>
+  </div>
+</form>
