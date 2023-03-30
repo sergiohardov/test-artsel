@@ -1,12 +1,13 @@
 {
-  "class": "bg-color-red",
+  "col_class": "col-12 col-lg-6",
+  "block_class": "bg-color-red",
   "title": "Our way",
   "contents": [
     {
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic maiores nihil nulla placeat porro veritatis. Ad asperiores distinctio eligendi, impedit in perferendis? Aliquam ducimus enim eveniet, id nemo soluta voluptate."
+      "item": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic maiores nihil nulla placeat porro veritatis. Ad asperiores distinctio eligendi, impedit in perferendis? Aliquam ducimus enim eveniet, id nemo soluta voluptate.</p>"
     },
     {
-      "text": "Soluta delectus commodi blanditiis incidunt voluptate assumenda magni, dolorem esse vero nesciunt dolorum asperiores. Consequatur laboriosam repellat dolorum!"
+      "item": "<p>Soluta delectus commodi blanditiis incidunt voluptate assumenda magni, dolorem esse vero nesciunt dolorum asperiores. Consequatur laboriosam repellat dolorum!</p>"
     }
   ],
   "btn": {
