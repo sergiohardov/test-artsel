@@ -24,7 +24,12 @@
   </div>
 
   <div class="contact-form__controls">
-    <div class="form_captcha">captcha</div>
-    <button class="contact-form__submit" type="submit" disabled>Send Message</button>
+    
+    <div class="contact-form__captha">
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <div class="g-recaptcha" data-sitekey="6LdZ8EYlAAAAAKOPykM1rgBg4oeAjoXMY8KlnPFg"></div>
+    </div>
+
+    <button class="contact-form__submit success" type="submit" disabled>Send Message</button>
   </div>
 </form>
