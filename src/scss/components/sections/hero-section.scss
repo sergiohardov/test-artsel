@@ -1,5 +1,4 @@
 .hero-section {
-  display: none;
   padding: 80px 0 80px 0;
   .row:has(.member-card) {
     row-gap: 80px;
@@ -10,7 +9,7 @@
       background: $color-lemon;
     }
   }
-  @media (max-width: 992px) {
+  @include media-breakpoint-down(lg) {
     padding: 40px 0 40px 0;
   }
 }
