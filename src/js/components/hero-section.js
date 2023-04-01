@@ -20,7 +20,6 @@ const sectionSlider = (sectionClass, slideClass, width) => {
 
   function toggleSlider(sliderEnable) {
     if (sliderEnable) {
-      console.log("Включение слайдера");
       slides.forEach((slide) => {
         slide.classList.add("swiper-slide");
       });
@@ -31,7 +30,6 @@ const sectionSlider = (sectionClass, slideClass, width) => {
       slider = heroSlider(sectionClass + " .swiper-container");
       slider.init();
     } else {
-      console.log("Выключение слайдера");
       slider.destroy();
       slider = null;
 

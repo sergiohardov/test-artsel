@@ -1,5 +1,3 @@
-console.log("sliders.js");
-
 import Swiper, { Pagination } from "swiper";
 
 export const heroSlider = (classSlider) => {
