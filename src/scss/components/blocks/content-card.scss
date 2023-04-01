@@ -11,6 +11,7 @@
     -webkit-mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
+    mask-image: url("../assets/img/content-card-mask.svg");
     p {
       color: $color-white;
       opacity: 0.8;
@@ -27,6 +28,7 @@
       padding: 40px 50px;
     }
     @include media-breakpoint-down(md) {
+    -webkit-mask-size: auto;
       padding: 30px 40px;
       p {
         font-size: 18px;
