@@ -1,6 +1,4 @@
 .button-italic {
-  background: $color-pink;
-  color: $color-red;
   text-decoration: none;
   width: max-content;
   padding: 18.5px 72px;
@@ -23,9 +21,9 @@
   &__text {
     position: relative;
     z-index: 1;
-    color: $color-red;
   }
   &:hover {
+    color: inherit;
     .button-italic__cover {
       left: 0;
     }

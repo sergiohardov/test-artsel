@@ -1,6 +1,6 @@
 {
   "col_class": "col-12 col-lg-6",
-  "block_class": "bg-color-red",
+  "bg_class": "bg-color-red",
   "title": "Our way",
   "contents": [
     {
@@ -11,7 +11,7 @@
     }
   ],
   "btn": {
-    "class": "bg-color-pink",
+    "class": "bg-color-pink text-color-red",
     "text": "More about us",
     "link": "#"
   }
