@@ -7,11 +7,10 @@
     flex-direction: column;
     gap: 32px;
     position: relative;
-    // TODO Углы на фоне
-    // -webkit-mask-image: url("../assets/img/content-card-mask.svg");
-    // -webkit-mask-size: 100% 100%;
-    // -webkit-mask-repeat: no-repeat;
-    // -webkit-mask-position: center;
+    -webkit-mask-image: url("/assets/img/content-card-mask.svg");
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
     p {
       color: $color-white;
       opacity: 0.8;
@@ -20,23 +19,22 @@
       }
     }
     @include media-breakpoint-down(xl) {
-      padding: 30px 20px;
+      padding: 50px 40px;
       gap: 15px;
     }
     @include media-breakpoint-down(lg) {
       margin-bottom: 20px;
+      padding: 40px 50px;
     }
     @include media-breakpoint-down(md) {
+      padding: 30px 40px;
       p {
         font-size: 18px;
       }
     }
   }
-
   @include media-breakpoint-down(lg) {
     order: 0;
     margin-bottom: 15px;
   }
 }
-
-
