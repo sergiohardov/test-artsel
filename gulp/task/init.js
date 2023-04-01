@@ -11,8 +11,8 @@ const messages = {
   @font-face {
     font-family: $font_name;
     font-display: swap;
-    src: url("/assets/fonts/#{$file_name}.woff") format("woff"),
-      url("/assets/fonts/#{$file_name}.woff2") format("woff2");
+    src: url("../assets/fonts/#{$file_name}.woff") format("woff"),
+      url("../assets/fonts/#{$file_name}.woff2") format("woff2");
     font-weight: #{$weight};
     font-style: #{$style};
   }
