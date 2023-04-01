@@ -1,7 +1,8 @@
-<form class="contact-form">
+<form class="contact-form" id="about-section-form">
+
   <div class="contact-form__field">
-    <label for="form_name">Name</label>
-    <input name="form_name" type="text" placeholder="John Doe" id="form_name" />
+    <label for="form_fullname">Name</label>
+    <input name="form_fullname" type="text" placeholder="John Doe" id="form_fullname" />
     <span class="contact-form__error">Please complete this name field.</span>
   </div>
 
@@ -24,12 +25,10 @@
   </div>
 
   <div class="contact-form__controls">
-    
-    <div class="contact-form__captha">
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-      <div class="g-recaptcha" data-sitekey="6LdZ8EYlAAAAAKOPykM1rgBg4oeAjoXMY8KlnPFg"></div>
-    </div>
-
-    <button class="contact-form__submit success" type="submit" disabled>Send Message</button>
+    <!-- <div id="contact-form__captcha"></div> -->
+    <div id="about-section-form-captcha"></div>
+    <button id="about-section-form-submit" class="contact-form__submit success" type="submit" disabled>Send Message</button>
+    <span class="contact-form__error text-right">You must approve captcha.</span>
   </div>
+  
 </form>
