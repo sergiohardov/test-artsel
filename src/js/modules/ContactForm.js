@@ -1,13 +1,13 @@
 export default class ContactForm {
   constructor(options) {
-    this.$formId = document.getElementById(options.formId);
+    this.$formEl = document.getElementById(options.form.container);
+    this.$submitEl = document.getElementById(options.form.submit);
+    this.fields = options.fields;
     this.captchaId = options.captcha.id;
     this.captchaKey = options.captcha.key;
     this.captchaWidget = null;
-    this.$submitId = document.getElementById(options.submitId);
-    this.fields = options.fields;
-    this.inputs = [];
 
+    this.inputs = [];
     this.errorFields = [];
     this.hasEvent = false;
 
@@ -79,19 +79,17 @@ export default class ContactForm {
   }
   #validFields() {
     if (this.errorFields.length === 0) {
-      console.log("all clear");
-      this.$submitId.removeAttribute("disabled");
+      this.$submitEl.removeAttribute("disabled");
 
       if (!this.hasEvent) {
-        this.$submitId.addEventListener("click", this.#sendMessage);
+        this.$submitEl.addEventListener("click", this.#sendMessage);
         this.hasEvent = true;
       }
     } else {
-      console.log("problem");
-      this.$submitId.setAttribute("disabled", "");
+      this.$submitEl.setAttribute("disabled", "");
 
       if (this.hasEvent) {
-        this.$submitId.removeEventListener("click", this.#sendMessage);
+        this.$submitEl.removeEventListener("click", this.#sendMessage);
         this.hasEvent = false;
       }
     }
@@ -113,10 +111,9 @@ export default class ContactForm {
     e.preventDefault();
 
     if (!this.#validCaptcha(this.captchaWidget)) {
-      console.log("Капча не заполнена");
     } else {
-      const textButton = this.$submitId.innerHTML;
-      this.$submitId.innerHTML = "Loading...";
+      const textButton = this.$submitEl.innerHTML;
+      this.$submitEl.innerHTML = "Loading...";
 
       const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
       const url = "https://artsel.thelookway.com/recaptcha.php";
@@ -126,7 +123,6 @@ export default class ContactForm {
       }, {});
 
       data.captcha = grecaptcha.getResponse(this.captchaWidget);
-      console.log(data);
 
       fetch(corsAnywhereUrl + url, {
         method: "POST",
@@ -137,10 +133,11 @@ export default class ContactForm {
       })
         .then((response) => response.json())
         .then((data) => {
-          this.$submitId.innerHTML = textButton;
+          this.$submitEl.innerHTML = textButton;
           if (data.success) {
             this.#resetForm();
             console.log(data);
+            alert("Данные отправлены, ответ сервера:\n" + JSON.stringify(data, null, 2));
           }
         })
         .catch((error) => console.error(error));
@@ -156,7 +153,6 @@ export default class ContactForm {
       this.#addError(field);
     });
     this.#validFields();
-    console.log(this.errorFields);
   }
 
   // Рендер капчи
@@ -171,7 +167,7 @@ export default class ContactForm {
   // События
   #events() {
     Array.from(Object.keys(this.fields)).forEach((field) => {
-      let el = this.$formId.querySelector(`[name="${this.fields[field]}"]`);
+      let el = this.$formEl.querySelector(`[name="${this.fields[field]}"]`);
       this.inputs.push(el);
       this.errorFields.push(field);
 
@@ -179,19 +175,16 @@ export default class ContactForm {
         el.addEventListener("input", () => {
           this.#validName(el, field);
           this.#validFields();
-          console.log(this.errorFields);
         });
       } else if (field === "email") {
         el.addEventListener("input", () => {
           this.#validEmail(el, field);
           this.#validFields();
-          console.log(this.errorFields);
         });
       } else if (field === "message") {
         el.addEventListener("input", () => {
           this.#validMessage(el, field);
           this.#validFields();
-          console.log(this.errorFields);
         });
       }
     });
