@@ -43,6 +43,9 @@ label {
   margin-bottom: 8px;
   font-size: 20px;
   line-height: 24px;
+  @include media-breakpoint-down(sm) {
+    font-size: 18px;
+  }
 }
 input,
 textarea {
@@ -73,6 +76,10 @@ textarea {
   &.success {
     color: $color-jade;
   }
+  @include media-breakpoint-down(sm) {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
 }
 button {
   border: none;
@@ -91,6 +98,9 @@ button {
   }
   &:disabled {
     background: $color-grey;
+  }
+  @include media-breakpoint-down(sm) {
+    padding: 14px 18px;
   }
 }
 .page {
