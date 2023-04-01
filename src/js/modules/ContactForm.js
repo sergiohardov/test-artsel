@@ -115,7 +115,6 @@ export default class ContactForm {
       const textButton = this.$submitEl.innerHTML;
       this.$submitEl.innerHTML = "Loading...";
 
-      const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
       const url = "https://artsel.thelookway.com/recaptcha.php";
       const data = this.inputs.reduce((acc, { name, value }) => {
         acc[name] = value;
@@ -124,7 +123,7 @@ export default class ContactForm {
 
       data.captcha = grecaptcha.getResponse(this.captchaWidget);
 
-      fetch(corsAnywhereUrl + url, {
+      fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,11 +135,16 @@ export default class ContactForm {
           this.$submitEl.innerHTML = textButton;
           if (data.success) {
             this.#resetForm();
-            console.log(data);
+            alert("Данные отправлены, ответ сервера:\n" + JSON.stringify(data, null, 2));
+          } else {
             alert("Данные отправлены, ответ сервера:\n" + JSON.stringify(data, null, 2));
           }
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          this.$submitEl.innerHTML = textButton;
+          this.#resetForm();
+          alert("Ошибка, ответ сервера:\n" + JSON.stringify(error, null, 2));
+        });
     }
   };
 
